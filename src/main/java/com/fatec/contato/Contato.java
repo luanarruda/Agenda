@@ -1,5 +1,9 @@
 package com.fatec.contato;
 
+import java.time.LocalDate;
+
+import org.springframework.cglib.core.Local;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -18,7 +22,7 @@ public class Contato {
     private String email;
     private String endereco;
     private String categoria;
-    private String aniversario;
+    private LocalDate aniversario;
 
     public Integer getId() {
         return id;
@@ -56,10 +60,10 @@ public class Contato {
     public void setCategoria(String categoria) {
         this.categoria = categoria;
     }
-    public String getAniversario() {
+    public LocalDate getAniversario() {
         return aniversario;
     }
-    public void setAniversario(String aniversario) {
+    public void setAniversario(LocalDate aniversario) {
         this.aniversario = aniversario;
     }
     
