@@ -14,6 +14,7 @@ public class ContatoMapper {
         contato.setEndereco(request.endereco());
         contato.setCategoria(request.categoria());
         contato.setAniversario(request.aniversario());
+        return contato;
     }
 
     public static ContatoResponse toDTO(Contato contato){
