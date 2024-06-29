@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -42,7 +43,7 @@ public class ContatoController {
     }
 
     @PostMapping
-    public ResponseEntity<ContatoResponse> saveContato(@RequestBody ContatoRequest contato){
+    public ResponseEntity<ContatoResponse> saveContato(@Validated @RequestBody ContatoRequest contato){
         ContatoResponse newContato = this.contatoService.saveContato(contato);
 
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(newContato.id()).toUri();
@@ -51,8 +52,10 @@ public class ContatoController {
     }
 
     @PutMapping("{id}")
-    public void updateContato(@PathVariable int id, @RequestBody ContatoRequest contato) {
+    public ResponseEntity<Void> updateContato(@Validated @PathVariable int id, @RequestBody ContatoRequest contato) {
         this.contatoService.updateContato(id, contato);
+
+        return ResponseEntity.ok().build();
     }
 
 }
