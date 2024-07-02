@@ -1,25 +1,28 @@
 <body class="d-flex justify-content-center align-items-center vh-100">
   <div class="container">
-    <div class="d-flex flex-column flex-md-row justify-content-center align-items-start w-100">
-      <div class="col-12 col-md-6 bg-light shadow p-3 rounded me-md-3">
+    <div class="d-flex flex-column align-items-center w-100">
+      <div class="col-12 col-md-8 bg-light shadow p-3 rounded mb-4">
         <form [formGroup]="formGroupContato">
           <div class="mb-3">
             <label for="name" class="form-label">Nome</label>
             <input type="text" class="form-control" id="name" formControlName="name">
-            <small *ngIf="name.touched && name.hasError('required')" class = "text-danger">
+            <small *ngIf="name.touched && name.hasError('required')" class="text-danger">
               *O nome é requirido
             </small>
           </div>
           <div class="mb-3">
             <label for="telefone" class="form-label">Telefone</label>
             <input type="text" class="form-control" id="telefone" formControlName="telefone" placeholder="(00) 00000-0000">
-            <small *ngIf="telefone.touched && telefone.hasError('required')" class = "text-danger">*Telefone é requirido</small>
-            <small *ngIf="telefone.touched && telefone.hasError('pattern')" class = "text-danger">*Telefone só pode conter números</small>
+            <small *ngIf="telefone.touched && telefone.hasError('required')" class="text-danger">*Telefone é requirido</small>
+            <small *ngIf="telefone.touched && telefone.hasError('pattern')" class="text-danger">*Telefone só pode conter números</small>
           </div>
           <div class="mb-3">
             <label for="email" class="form-label">Email</label>
             <input type="email" class="form-control" id="email" formControlName="email">
-            <small *ngIf="telefone.touched && telefone.hasError('pattern')" class = "text-danger">
+            <small *ngIf="email.touched && email.hasError('required')" class="text-danger">
+              *O e-mail é requirido
+            </small>
+            <small *ngIf="email.touched && email.hasError('email')" class="text-danger">
               *Email requer "&#64;"
             </small>
           </div>
@@ -31,7 +34,7 @@
             <label for="aniversario" class="form-label">Data de Aniversário</label>
             <input type="date" class="form-control" id="aniversario" formControlName="aniversario">
           </div>
-          <div>
+          <div class="mb-3">
             <label>Gênero:</label>
             <div>
               <input type="radio" id="masculino" formControlName="genero" value="Masculino">
@@ -59,10 +62,13 @@
               </div>
             </div>
           </div>
-          <button type="submit" class="btn btn-primary" [disabled] = "!formGroupContato.valid" (click)="save()">Salvar</button>
+          <div class="d-flex justify-content-center align-items-center ">
+            <button type="submit" class="btn btn-primary" [disabled]="!formGroupContato.valid" (click)="save()">Salvar</button>
+          </div>
+
         </form>
       </div>
-      <div class="col-12 col-md-6 mt-3 mt-md-0 bg-light shadow p-3 rounded ms-md-3">
+      <div class="col-12 col-md-10 bg-light shadow p-3 rounded">
         <table class="table table-hover">
           <thead>
             <tr>
@@ -75,6 +81,7 @@
               <th scope="col">Categoria</th>
               <th scope="col">Gênero</th>
               <th scope="col">Favorito</th>
+              <th scope="col" class="d-flex justify-content-center">Opções</th>
             </tr>
           </thead>
           <tbody>
@@ -89,14 +96,13 @@
               <td>{{contato.genero}}</td>
               <td>{{contato.favorito ? "&#9733;" : "Não"}}</td>
               <td class="d-flex justify-content-end">
-                <button class="btn btn-success" type="button" (click)="edit(contato)">Alterar</button>
-                <button class="btn btn-danger ms-3" type="button" (click)="delete(contato)">Remover</button>
+                <button class="btn btn-success me-2" type="button" (click)="edit(contato)">Alterar</button>
+                <button class="btn btn-danger" type="button" (click)="delete(contato)">Remover</button>
               </td>
             </tr>
           </tbody>
         </table>
       </div>
-
     </div>
   </div>
 </body>
