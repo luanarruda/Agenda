@@ -23,14 +23,25 @@
             <label for="aniversario" class="form-label">Data de Aniversário</label>
             <input type="date" class="form-control" id="aniversario" formControlName="aniversario">
           </div>
+          <div>
+            <label>Gênero:</label>
+            <div>
+              <input type="radio" id="masculino" formControlName="genero" value="Masculino">
+              <label for="masculino">Masculino</label>
+            </div>
+            <div>
+              <input type="radio" id="feminino" formControlName="genero" value="Feminino">
+              <label for="feminino">Feminino</label>
+            </div>
+          </div>
           <div class="mb-3 row">
             <div class="col">
               <label for="categoria" class="form-label">Categoria</label>
               <select class="form-select" id="categoria" aria-label="Default select example" formControlName="categoria">
                 <option selected>Escolha uma</option>
-                <option value="trabalho">Trabalho</option>
-                <option value="familia">Família</option>
-                <option value="faculdade">Faculdade</option>
+                <option value="Trabalho">Trabalho</option>
+                <option value="Familia">Família</option>
+                <option value="Faculdade">Faculdade</option>
               </select>
             </div>
             <div class="col d-flex align-items-center">
@@ -54,6 +65,7 @@
               <th scope="col">Email</th>
               <th scope="col">Aniversário</th>
               <th scope="col">Categoria</th>
+              <th scope="col">Gênero</th>
               <th scope="col">Favorito</th>
             </tr>
           </thead>
@@ -66,7 +78,8 @@
               <td>{{contato.email}}</td>
               <td>{{contato.aniversario}}</td>
               <td>{{contato.categoria}}</td>
-              <td></td>
+              <td>{{contato.genero}}</td>
+              <td>{{contato.favorito ? "Sim" : "Não"}}</td>
               <td class="d-flex justify-content-end">
                 <button class="btn btn-success" type="button" (click)="edit(contato)">Alterar</button>
                 <button class="btn btn-danger ms-3" type="button" (click)="delete(contato)">Remover</button>
@@ -78,6 +91,3 @@
     </div>
   </div>
 </body>
-
-
-

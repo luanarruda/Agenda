@@ -14,7 +14,6 @@ export class ContatosComponent implements OnInit{
   isEditing: boolean = false;
 
   constructor(private formBuilder: FormBuilder, private service: ContatoService){
-
     this.formGroupContato = formBuilder.group({
       id: [''],
       name: [''],
@@ -22,15 +21,17 @@ export class ContatosComponent implements OnInit{
       email: [''],
       endereco: [''],
       categoria: [''],
-      aniversario: ['']
+      aniversario: [''],
+      genero: [''],
+      favorito: [false],
     });
   }
   ngOnInit(): void {
     this.loadContatos();
-}
+  }
 
   loadContatos(){
-    this.service.getContatos().subscribe({next: data => this.contatos = data});
+    this.service.getContatos().subscribe({next: data => {this.contatos = data; console.log(data)}});
   }
 
   save(){
@@ -53,7 +54,7 @@ export class ContatosComponent implements OnInit{
     this.service.delete(contato).subscribe({
       next: () => this.loadContatos()
     });
-}
+  }
 
   edit(contato:Contato){
     this.formGroupContato.setValue(contato);

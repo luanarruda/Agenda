@@ -13,6 +13,8 @@ String email,
 @NotNull(message = "Endereço não pode ser nulo")
 String endereco,
 String categoria,
-LocalDate aniversario){
+LocalDate aniversario,
+String genero,
+Boolean favorito){
     
 }

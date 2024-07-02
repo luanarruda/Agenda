@@ -6,5 +6,7 @@ export interface Contato
   email:string,
   endereco: string,
   categoria: string[],
-  aniversario: Date
+  aniversario: Date,
+  genero: string,
+  favorito: boolean
  }

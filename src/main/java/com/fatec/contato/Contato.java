@@ -23,7 +23,20 @@ public class Contato {
     private String endereco;
     private String categoria;
     private LocalDate aniversario;
-
+    private String genero;
+    private Boolean favorito;
+    public Boolean getFavorito() {
+        return favorito;
+    }
+    public void setFavorito(Boolean favorito) {
+        this.favorito = favorito;
+    }
+    public String getGenero() {
+        return genero;
+    }
+    public void setGenero(String genero) {
+        this.genero = genero;
+    }
     public Integer getId() {
         return id;
     }

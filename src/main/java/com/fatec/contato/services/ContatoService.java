@@ -37,7 +37,6 @@ public class ContatoService {
         if (this.contatoRepository.existsById(id)){
             this.contatoRepository.deleteById(id);
         }
-
         else {
             throw new EntityNotFoundException("Contato não cadastrado");
         }
@@ -58,6 +57,8 @@ public class ContatoService {
             aux.setEndereco(request.endereco());
             aux.setCategoria(request.categoria());
             aux.setAniversario(request.aniversario());
+            aux.setGenero(request.genero());
+            aux.setFavorito(request.favorito());
             this.contatoRepository.save(aux);
         }
         catch (EntityNotFoundException e) {

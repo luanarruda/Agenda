@@ -7,7 +7,7 @@ import { Contato } from './contato';
   providedIn: 'root'
 })
 export class ContatoService {
-  url = "http:localhost:8080/contatos";
+  url = "http://localhost:8080/contatos";
   constructor(private http: HttpClient) { }
 
   getContatos(): Observable<Contato[]>{

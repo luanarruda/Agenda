@@ -14,11 +14,13 @@ public class ContatoMapper {
         contato.setEndereco(request.endereco());
         contato.setCategoria(request.categoria());
         contato.setAniversario(request.aniversario());
+        contato.setGenero(request.genero());
+        contato.setFavorito(request.favorito());
         return contato;
     }
 
     public static ContatoResponse toDTO(Contato contato){
         return new ContatoResponse(contato.getId(),
-        contato.getName(), contato.getTelefone(),contato.getEmail(),contato.getEndereco(), contato.getCategoria(), contato.getAniversario());
+        contato.getName(), contato.getTelefone(),contato.getEmail(),contato.getEndereco(), contato.getCategoria(), contato.getAniversario(), contato.getGenero(), contato.getFavorito());
     }
 }
