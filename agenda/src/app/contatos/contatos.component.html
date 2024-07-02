@@ -6,6 +6,9 @@
           <div class="mb-3">
             <label for="name" class="form-label">Nome</label>
             <input type="text" class="form-control" id="name" formControlName="name">
+            <small *ngIf="name.touched && name.hasError('required')" class = "text-danger">
+              *O nome é requirido
+            </small>
           </div>
           <div class="mb-3">
             <label for="telefone" class="form-label">Telefone</label>
@@ -51,10 +54,11 @@
               </div>
             </div>
           </div>
-          <button type="submit" class="btn btn-primary" (click)="save()">Salvar</button>
+          <button type="submit" class="btn btn-primary" [disabled] = "!formGroupContato.valid" (click)="save()">Salvar</button>
         </form>
       </div>
-      <div class="col-12 col-md-6 mt-3 mt-md-0 bg-light shadow p-3 rounded ms-md-3">
+     <hr>
+     <h2 class=" mb-2 mt-2 text-center">Contatos</h2>
         <table class="table table-hover">
           <thead>
             <tr>
@@ -79,7 +83,7 @@
               <td>{{contato.aniversario}}</td>
               <td>{{contato.categoria}}</td>
               <td>{{contato.genero}}</td>
-              <td>{{contato.favorito ? "Sim" : "Não"}}</td>
+              <td>{{contato.favorito ? "&#9733;" : "Não"}}</td>
               <td class="d-flex justify-content-end">
                 <button class="btn btn-success" type="button" (click)="edit(contato)">Alterar</button>
                 <button class="btn btn-danger ms-3" type="button" (click)="delete(contato)">Remover</button>
@@ -88,6 +92,6 @@
           </tbody>
         </table>
       </div>
+
     </div>
-  </div>
 </body>
