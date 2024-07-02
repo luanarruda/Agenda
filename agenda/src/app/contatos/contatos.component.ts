@@ -18,8 +18,8 @@ export class ContatosComponent implements OnInit{
     this.formGroupContato = formBuilder.group({
       id: [''],
       name: ['', [Validators.required]],
-      telefone: [''],
-      email: [''],
+      telefone: ['', [Validators.required, Validators.pattern(/^[0-9]+$/)]],
+      email: ['', Validators.email],
       endereco: [''],
       categoria: [''],
       aniversario: [''],
@@ -75,6 +75,12 @@ export class ContatosComponent implements OnInit{
 
   get name(): any{
     return this.formGroupContato.get("name");
+  }
+  get telefone(): any{
+    return this.formGroupContato.get("telefone");
+  }
+  get email(): any{
+    return this.formGroupContato.get("email");
   }
 
 }
